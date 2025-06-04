@@ -1,4 +1,35 @@
+// simpler and more readible
+// Time: O(n)
+// Each number is processed only once because we skip numbers that are not sequence starts.
 function longestConsecutive(nums: number[]): number {
+    // put all numbers into a Set => removes duplicates
+    const numSet = new Set(nums);
+    let longest = 0;
+
+    // Loop over each number
+    for (const num of numSet) {  // only iterate unique values
+        // only start sequence if it's the beginning - This makes the algorithm efficient 
+        if (!numSet.has(num - 1)) {
+            let currentNum = num;
+            // only counting the length of sequence, not actual sequence
+            let currentStreak = 1;
+
+            // if there is next number
+            while (numSet.has(currentNum + 1)) {
+                currentNum += 1;
+                currentStreak += 1;
+            }
+
+            // compare longest streak so far with this one
+            longest = Math.max(longest, currentStreak);
+        }
+    }
+
+    return longest;
+}
+
+
+function longestConsecutiveSlow(nums: number[]): number {
     // creating hash map to keep track of what numbers we have visited
     const visited = {};
     for(let number of nums){
