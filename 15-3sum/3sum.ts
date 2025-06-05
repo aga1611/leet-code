@@ -5,11 +5,12 @@ var threeSum = function(nums) {
     // sorting array so we know which way to move the pointers
     nums.sort((a, b) => a - b);
 
-    // iterate through array
-    // setting i as our fixed element
+    // Outer loop: iterate through array
+    // fixing 1 element
     for (let i = 0; i < nums.length; i++) {
-        // check if current element is duplicate of previous and skip if yes
+        // check if duplicate - possible because array is sorted!!
         if (i > 0 && nums[i] === nums[i-1]) {
+            // If the current number nums[i] is the same as the previous one, skip this iteration
             continue;
         }
         
@@ -34,6 +35,7 @@ var threeSum = function(nums) {
                 j++;
 
                 // move start pointer to right to avoid duplicates
+                // This avoids returning the same triplet multiple times    due to repeated numbers - possible because of sorting
                 while (nums[j] === nums[j-1] && j < k) {
                     j++;
                 }
