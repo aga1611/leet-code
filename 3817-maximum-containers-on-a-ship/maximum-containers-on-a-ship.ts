@@ -1,4 +1,4 @@
-function maxContainers(n: number, w: number, maxWeight: number): number {
+function maxContainersLessClean(n: number, w: number, maxWeight: number): number {
     if(n * n * w <= maxWeight) {
         return n * n
     } else {
@@ -7,7 +7,7 @@ function maxContainers(n: number, w: number, maxWeight: number): number {
 };
 
 // cleaner version
-function maxContainersCleaner(n: number, w: number, maxWeight: number): number {
+function maxContainers(n: number, w: number, maxWeight: number): number {
     const totalContainers = n * n;
     const weightLimit = Math.floor(maxWeight / w);
     return Math.min(totalContainers, weightLimit);
