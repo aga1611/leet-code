@@ -16,10 +16,13 @@ function lowestCommonAncestor(root: TreeNode | null, p: TreeNode | null, q: Tree
     let current = root;
 
     while(current) {
+        // if both are higher we must check in the right part of the tree
         if(current.val < p.val && current.val < q.val) {
             current = current.right
+         // if both are lower we must check in the left part of the tree
         } else if(current.val > p.val && current.val > q.val) {
             current = current.left
+        // else we have found our solution
         } else {
             return current;
         }
