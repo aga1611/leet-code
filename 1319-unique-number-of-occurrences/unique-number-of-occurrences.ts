@@ -1,11 +1,12 @@
 function uniqueOccurrences(arr: number[]): boolean {
-    const dictionary = {};
+    // using map for better type safetly and slightly better performance
+    const map = new Map<number,number>();
 
     for(let number of arr) {
-        dictionary[number] = (dictionary[number] || 0) + 1
+        map.set(number, (map.get(number) || 0) + 1);
     }
 
-    const values = Object.values(dictionary);
+    const values = Array.from(map.values());
     const set = new Set(values);
 
     return values.length === set.size;
