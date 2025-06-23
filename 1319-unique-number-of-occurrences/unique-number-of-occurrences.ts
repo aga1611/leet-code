@@ -1,3 +1,6 @@
+// Time complexity: O(n)
+// Space complexity: O(n)
+
 function uniqueOccurrences(arr: number[]): boolean {
     // using map for better type safetly and slightly better performance
     const map = new Map<number,number>();
