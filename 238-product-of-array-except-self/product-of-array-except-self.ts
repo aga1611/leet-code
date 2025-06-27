@@ -1,3 +1,44 @@
+function productExceptSelf(nums: number[]): number[] {
+const length = nums.length;
+
+  // fill the array of length equal to nums array and fill it with 1 => [1,1,1,1,1]
+  const result = new Array(length).fill(1);
+
+  // Calculate prefix products
+  // prefixProduct starts at 1 because multiplying by 1 doesn't change the value.
+  let prefixProduct = 1;
+  for (let i = 0; i < length; i++) {
+    result[i] = prefixProduct;
+    // Update prefixProduct by multiplying it with the current element nums[i]
+    prefixProduct *= nums[i];
+  }
+
+  // Calculate suffix products and multiply with prefix products
+  let suffixProduct = 1;
+  // starting from last element
+  for (let i = length - 1; i >= 0; i--) {
+    // result[i] contains the product of all elements before i already 
+    result[i] *= suffixProduct;
+    suffixProduct *= nums[i];
+  }
+
+  return result;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+
 // IDEA
 // Compute the prefix products (product of all elements before the current index).
 // Compute the suffix products (product of all elements after the current index).
@@ -56,3 +97,5 @@ function productExceptSelfBruteForce(nums: number[]): number[] {
 
     return Object.values(result).map((entry) => entry[1])
 };
+
+*/
