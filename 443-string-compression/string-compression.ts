@@ -6,14 +6,16 @@ function compress(chars: string[]): number {
         // Check if end of group or end of array
         if (read === chars.length || chars[read] !== chars[left]) {
             // Write the character
-            chars[write++] = chars[left];
+            chars[write] = chars[left];
+            write++;
+
 
             // Write the count if more than 1
             let count = read - left;
             if (count > 1) {
-                const digits = count.toString();
+                const digits = count.toString(); // Convert count to string (e.g. 12 → "12")
                 for (let digit of digits) {
-                    chars[write++] = digit;
+                    chars[write++] = digit; // Write each digit separately
                 }
             }
 
@@ -22,7 +24,7 @@ function compress(chars: string[]): number {
         }
     }
 
-    return write;
+    return write; // Length of the compressed array
 }
 
 
