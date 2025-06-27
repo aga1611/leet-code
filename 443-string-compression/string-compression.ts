@@ -1,3 +1,5 @@
+// Time: O(n) looping through array
+// Space 0(1) done in-place using the chars array itself (no extra data structures created)
 function compress(chars: string[]): number {
     let write = 0;  // Index where we write the compressed value
     let left = 0;   // Start of the current group
