@@ -1,6 +1,5 @@
 // this is enough if the array is sorted
 function removeDuplicates(nums: number[]): number {
-    if (nums.length === 0) return 0;
     let k = 1; // index for next unique element
 
     for (let i = 1; i < nums.length; i++) {
