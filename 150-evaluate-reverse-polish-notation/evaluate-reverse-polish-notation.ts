@@ -10,12 +10,14 @@ function evalRPN(tokens: string[]): number {
     const stack = [];
 
     for(let s of tokens) {
+        // Important to not overcomplicate solution somtimes the easies thing just works
         if(["+", "-", "*", "/"].includes(s)) {
             let b = stack.pop();
             let a = stack.pop();
             let result;
 
             switch (s) {
+                // Important to not overcomplicate solution somtimes the easies thing just works
                 case "+": result = a + b; break;
                 case "-": result = a - b; break;
                 case "*": result = a * b; break;
