@@ -13,6 +13,19 @@ function largestAltitude(gain: number[]): number {
 
 
 /*
+// one line using reduce
+function largestAltitude(gain: number[]): number {
+    return gain.reduce(
+        ([max, curr], g) => {
+            const next = curr + g;
+            return [Math.max(max, next), next];
+        },
+        [0, 0] // [maxAltitude, currentAltitude]
+    )[0];
+}
+
+
+
 // works but space & time complexity is O(N) as we create new prefixSum array
 function largestAltitude(gain: number[]): number {
 
