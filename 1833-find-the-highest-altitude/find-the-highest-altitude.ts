@@ -1,4 +1,21 @@
+// Time O(N) Space O(1)
 function largestAltitude(gain: number[]): number {
+    let maxAltitude = 0;
+    let currentAltitude = 0;
+
+    for (let g of gain) {
+        currentAltitude += g;
+        maxAltitude = Math.max(maxAltitude, currentAltitude);
+    }
+
+    return maxAltitude;
+}
+
+
+/*
+// works but space & time complexity is O(N) as we create new prefixSum array
+function largestAltitude(gain: number[]): number {
+
     const prefixSum = new Array(gain.length + 1).fill(0);
     prefixSum[0] = 0;
 
@@ -10,3 +27,4 @@ function largestAltitude(gain: number[]): number {
 
     return maxAttitude
 };
+*/
