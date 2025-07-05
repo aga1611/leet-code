@@ -1,17 +1,18 @@
+// Time & space complexity O(N)
 function findLucky(arr: number[]): number {
-    const freq = {};
+    // better to use Map than object, as object keys are always strings
+    const freq = new Map<number, number>();
     let luckyInteger = -1;
 
-    for(let n of arr) {
-        freq[n] = (freq[n]|| 0) + 1;
+    for (const n of arr) {
+        freq.set(n, (freq.get(n) || 0) + 1);
     }
 
-    for( let [n, f] of Object.entries(freq)) {
-        if(Number(n) === f) {
-            luckyInteger = Math.max(Number(n), luckyInteger)
+    for (const [num, count] of freq.entries()) {
+        if (num === count) {
+            luckyInteger = Math.max(luckyInteger, num);
         }
     }
 
-    return luckyInteger
-    
-};
+    return luckyInteger;
+}
